@@ -1,5 +1,6 @@
 package windstudy.com.androidgopro.ListProduct;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,9 +15,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import windstudy.com.androidgopro.DetalProduct.DetalActivity;
 import windstudy.com.androidgopro.R;
 
-public class ListProductActivity extends AppCompatActivity  {
+public class ListProductActivity extends AppCompatActivity  implements ListProductAdapter.OnItemClickListener {
     ArrayList<ListProduct> arrayData = new ArrayList<>();
     RecyclerView rvProduct;
     ListProductAdapter adapter;
@@ -32,7 +34,8 @@ public class ListProductActivity extends AppCompatActivity  {
         adapter.context = ListProductActivity.this;
         rvProduct.setAdapter(adapter);
         rvProduct.setLayoutManager(gridLayoutManager);
-        
+        adapter.setOnItemClickListener(ListProductActivity.this);
+
 
 
 
@@ -87,4 +90,11 @@ public class ListProductActivity extends AppCompatActivity  {
 
     }
 
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(ListProductActivity.this, DetalActivity.class);
+        startActivity(intent);
+
+
+    }
 }

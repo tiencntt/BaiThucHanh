@@ -20,6 +20,14 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
     ArrayList<ListProduct> arrData = new ArrayList<>();
     Context context;
     AdapterView.OnItemClickListener onItemClickListener;
+    public interface  OnItemClickListener{
+        void onItemClick(int position);
+
+
+    }
+    public void setOnItemClickListener(OnItemClickListener listener){
+        onItemClickListener = (AdapterView.OnItemClickListener) listener;
+    }
 
 
 
